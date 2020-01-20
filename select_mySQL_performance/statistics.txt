@@ -1,0 +1,16 @@
+multithreaded on pc (12 cores)
+
+database dimension: 2756303 rows
+
+Query type: "select X from table where filename=Y"
+
+performance single query ~ 1.980 sec pymsql
+performance single query ~ 1.950 sec MySQLdb
+performance single query ~ 1.916 sec MySQLConnectionPool
+performance single query ~ 0.0011sec SQLAlchemy
+
+The best performance on the single query is given by the ORM solution.
+Connection pooling gives no improvement.
+All the solutions scale with the threads number.
+
+SQLAlchemy + pooling has not been tested.

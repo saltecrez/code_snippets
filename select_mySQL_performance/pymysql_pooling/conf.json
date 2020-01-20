@@ -1,0 +1,14 @@
+{
+        "email": "elisa.londero@inaf.it",
+        "sender": "vidar@localhost",
+        "smtphost": "localhost",
+        "camerasfolder": "/home/londero/MyProjects/DB_access_performance/storage/",
+        "dbhost": "localhost",
+        "dbuser": "archa",
+        "dbpwd": "Archa123.",
+        "dbname": "metadata_prisma",
+	"tbname": "PRS",
+        "ingestfolder": "/home/ia2user/workspace/branch_captures_development/PRISMAIngestion/captures_preprocessor/ingest",
+        "thumbsfolder": "/home/ia2user/workspace/branch_captures_development/PRISMAIngestion/captures_preprocessor/thumbs"
+}
+
