@@ -56,14 +56,13 @@ class data_file(Base):
     def __init__(self, EXP_ID):
         self.EXP_ID = EXP_ID
 
-
 def do_work(filename):
     t1 = datetime.now()
     Session = mysql_tools.mysql_session(db_user,db_pwd,db_host,db_name,logfile)
     session = Session()
     print("PID %d: using connection %s" % (os.getpid(), session))
     rows = session.query(data_file)
-    flt = rows.filter(data_file.EXP_ID == filename)
+    flt = rows.filter(data_file.EXP_ID == filename).scalar()
     session.close()
     t2 = datetime.now()
     delta = t2-t1
@@ -72,11 +71,10 @@ def do_work(filename):
 for j in range(len(cameras_month_path)):
     fits_captures = glob(cameras_month_path[j] + '/*.fit')
     selects = []
-    for j in fits_captures:
-	fits_name = os.path.basename(j)
+    for k in fits_captures:
+	fits_name = os.path.basename(k)
 	print fits_name
-	sql = """select id from CAM where EXP_ID='%s';""" % (fits_name)
-	selects.append(sql)
+	selects.append(fits_name)
     pool = multiprocessing.Pool(multiprocessing.cpu_count())
     pool = multiprocessing.Pool(processes=nr_threads)
     pool.map_async(do_work, selects).get(timeout=20)

@@ -7,10 +7,11 @@ Query type: "select X from table where filename=Y"
 performance single query ~ 1.980 sec pymsql
 performance single query ~ 1.950 sec MySQLdb
 performance single query ~ 1.916 sec MySQLConnectionPool
-performance single query ~ 0.0011sec SQLAlchemy
+performance single query ~ 0.992 sec SQLAlchemy
 
-The best performance on the single query is given by the ORM solution.
+There is almost no difference in the performance of the three solutions.
 Connection pooling gives no improvement.
 All the solutions scale with the threads number.
+Pure SQL needs 1.98 sec to perform a "select X from table where filename=Y"
 
-SQLAlchemy + pooling has not been tested.
+A solution to this could be dividing the table among multiple MySQL instances and try something like Python's parallel-connection 0.1.2 which according to the documentation does multiple accesses to different databases. This could decrease the load on a single search.
