@@ -10,7 +10,7 @@
 # ------------------- #
 dumps_folder=/home/controls/dumps/
 db_user='root'
-db_pwd='******'
+db_pwd='nervensaege'
 
 dump_cmd="mysqldump -u${db_user} -p${db_pwd}"
 
